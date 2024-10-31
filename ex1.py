@@ -9,7 +9,7 @@ df = sns.load_dataset('iris')
 st.title('Análise do Conjunto de Dados Iris')
 st.write(df.head())
 
-st.subheader('Estatísticas Descritcas')
+st.subheader('Estatísticas Descritivas')
 st.write(df.describe())
 
 st.subheader('Gráfico de Dispersão: Sepal Lenght vs Sepal Width')
