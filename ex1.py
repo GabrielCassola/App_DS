@@ -17,4 +17,9 @@ st.write('Visualizção das características das espécies de Iris')
 scatter_plot = sns.scatterplot(data=df, x='sepal_length', y='sepal_width')
 st.pyplot(scatter_plot.figure)
 
+st.subheader('Distribuição do comprimento da pétala')
+st.write('Distribuição do comprimento da pétala por espécie')
+hist_plot = sns.histplot(data=df, x='petal_length', hue='species', kde=True)
+st.pyplot(hist_plot.figure)
+
 
