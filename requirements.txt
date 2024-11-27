@@ -1,6 +1,6 @@
 streamlit
 plotly
 pandas
+numpy
 seaborn
-scikit-learn
 
