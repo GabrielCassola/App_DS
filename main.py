@@ -392,6 +392,7 @@ st.pyplot(fig)
 
 
 st.subheader("Wordcloud: Uma visão rápida das avaliações")
+nltk.download('stopwords')
 
 # Definindo palavras de parada (stopwords)
 stop = stopwords.words('english')
