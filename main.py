@@ -271,55 +271,6 @@ st.subheader("Aplicativos com preços acima de $100")
 high_price_apps = df[['Category', 'App']][df.Price > 100]
 st.write(high_price_apps)
 
-# Distribuição de aplicativos pagos e gratuitos por categoria
-st.subheader("Distribuição de aplicativos pagos e gratuitos por categoria")
-new_df = df.groupby(['Category', 'Type']).agg({'App': 'count'}).reset_index()
-
-outer_group_names = ['GAME', 'FAMILY', 'MEDICAL', 'TOOLS']
-outer_group_values = [len(df.App[df.Category == category]) for category in outer_group_names]
-
-a, b, c, d = [plt.cm.Blues, plt.cm.Reds, plt.cm.Greens, plt.cm.Purples]
-
-inner_group_names = ['Paid', 'Free'] * 4
-inner_group_values = []
-for category in outer_group_names:
-    for t in ['Paid', 'Free']:
-        x = new_df[new_df.Category == category]
-        try:
-            inner_group_values.append(int(x.App[x.Type == t].values[0]))
-        except:
-            inner_group_values.append(0)
-
-explode = (0.025, 0.025, 0.025, 0.025)
-
-fig, ax = plt.subplots(figsize=(10, 10))
-ax.axis('equal')
-mypie, texts, _ = ax.pie(
-    outer_group_values, 
-    radius=1.2, 
-    labels=outer_group_names, 
-    autopct='%1.1f%%', 
-    pctdistance=1.1,
-    labeldistance=0.75,  
-    explode=explode, 
-    colors=[a(0.6), b(0.6), c(0.6), d(0.6)], 
-    textprops={'fontsize': 16}
-)
-plt.setp(mypie, width=0.5, edgecolor='black')
-
-mypie2, _ = ax.pie(
-    inner_group_values, 
-    radius=1.2 - 0.5, 
-    labels=inner_group_names, 
-    labeldistance=0.7, 
-    textprops={'fontsize': 12}, 
-    colors=[a(0.4), a(0.2), b(0.4), b(0.2), c(0.4), c(0.2), d(0.4), d(0.2)]
-)
-plt.setp(mypie2, width=0.5, edgecolor='black')
-plt.margins(0, 0)
-
-st.pyplot(fig)
-
 # Downloads: Aplicativos pagos vs gratuitos
 st.subheader("Comparação de downloads entre aplicativos pagos e gratuitos")
 trace0 = go.Box(
