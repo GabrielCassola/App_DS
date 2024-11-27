@@ -113,6 +113,33 @@ st.write("Existem valores extremos em variáveis como Price, Reviews e Installs.
 st.markdown("#### 7. Gratuitos x Pagos")
 st.write("Os aplicativos pagos tendem a ter menos instalações quando comparados aos gratuitos. Isso reflete o comportamento esperado do mercado, onde os usuários preferem experimentar apps gratuitos antes de pagar.")
 
+st.subheader("Distribuição de aplicativos por categoria")
+
+# Contar o número de aplicativos por categoria e pegar as 10 maiores
+top_10_categories = df['Category'].value_counts().head(10)
+
+# Criar o gráfico de barras
+fig_bar = go.Figure(
+    data=[go.Bar(
+        x=top_10_categories.index,
+        y=top_10_categories.values,
+        text=top_10_categories.values,
+        textposition='auto',
+        marker_color='skyblue'
+    )]
+)
+
+# Atualizar layout do gráfico
+fig_bar.update_layout(
+    title="Distribuição de aplicativos por categoria",
+    xaxis_title="Categoria",
+    yaxis_title="Número de Aplicativos",
+    xaxis=dict(tickangle=-45),  # Inclina os rótulos do eixo X para melhor visualização
+    template='plotly_white'    # Estilo do gráfico
+)
+
+# Exibir o gráfico no Streamlit
+st.plotly_chart(fig_bar)
 
 # Classificação média dos aplicativos
 st.subheader("Classificação média dos aplicativos")
