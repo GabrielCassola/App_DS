@@ -22,8 +22,16 @@ df['Size'] = df['Size'].apply(lambda x: str(x).replace(',', '') if 'M' in str(x)
 df['Size'] = df['Size'].apply(lambda x: float(str(x).replace('k', '')) / 1000 if 'k' in str(x) else x)
 df['Size'] = df['Size'].apply(lambda x: float(x))
 
+# Número de instalações sendo int e removendo '+'e ','
+df['Installs'] = df['Installs'].apply(lambda x: x.replace('+', '') if '+' in str(x) else x)
+df['Installs'] = df['Installs'].apply(lambda x: x.replace(',', '') if ',' in str(x) else x)
+df['Installs'] = df['Installs'].apply(lambda x: int(x))
+
+# Preço sendo float e removendo '$'
+df['Price'] = df['Price'].apply(lambda x: str(x).replace('$', '') if '$' in str(x) else str(x))
+df['Price'] = df['Price'].apply(lambda x: float(x))
 
 # Amostra
 st.title('Análise do conjunto de dados da Google Play Store')
 st.subheader('Amostra do dataset')
-st.write(df.sample(5))
+st.write(df.head(10))
