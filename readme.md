@@ -3,6 +3,11 @@
 Este projeto é uma aplicação interativa desenvolvida em **Streamlit** para analisar dados da Google Play Store. A aplicação explora diferentes aspectos, como avaliações de aplicativos, categorias, sentimentos dos usuários e tendências de mercado, com o objetivo de extrair insights úteis e estratégicos.
 
 ---
+## Streamlit:
+
+Análise disponível no link: https://gplayanalytics.streamlit.app/
+
+---
 
 ## 📊 **Principais Funcionalidades**
 - **Visualização de Dados**:
