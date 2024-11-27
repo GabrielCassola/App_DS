@@ -332,9 +332,8 @@ st.write("""
 """)
 
 
-
-st.title("Análise de Sentimentos - Avaliações de Usuários")
-
+# Análise de sentimentos dos usuários
+st.title("Análise de Sentimentos - Avaliações de usuários")
 # Carregando os dados
 reviews_df = pd.read_csv('datasets/googleplaystore_user_reviews.csv')
 merged_df = pd.merge(df, reviews_df, on="App", how="inner")
@@ -371,7 +370,7 @@ trace3 = go.Bar(
 
 # Configurando layout do gráfico
 layout = go.Layout(
-    title='Análise de Sentimentos',
+    title='Análise de sentimentos',
     barmode='stack',
     xaxis={'tickangle': -45, 'title': 'Categorias'},
     yaxis={'title': 'Proporção de avaliações'}
@@ -387,7 +386,7 @@ sns.set_style('ticks')
 sns.set_style("darkgrid")
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.boxplot(x='Type', y='Sentiment_Polarity', data=merged_df, ax=ax)
-ax.set_title('Distribuição da Polaridade de Sentimentos')
+ax.set_title('Distribuição da polaridade de sentimentos')
 st.pyplot(fig)
 
 
@@ -425,3 +424,48 @@ fig, ax = plt.subplots(figsize=(10, 10))
 ax.imshow(wc, interpolation='bilinear')
 ax.axis("off")
 st.pyplot(fig)
+
+# Conclusão
+
+# Seção: Importância do pré-processamento de Dados]
+st.header("Conclusões gerais")
+st.subheader("Importância do pré-processamento de dados")
+st.write("""
+- **Desafios superados:** Dados inconsistentes, valores faltantes e formatos variados.
+""")
+
+# Seção: Relevância das análises exploratórias
+st.subheader("Relevância das análises exploratórias")
+st.write("""
+- Identificar padrões nos dados, como a correlação entre número de instalações e avaliações, permite entender o comportamento do mercado e guiar estratégias.
+- **Valor para negócios:** Empresas podem usar insights como “aplicativos gratuitos atraem mais downloads” para decidir modelos de monetização.
+""")
+
+# Seção: aplicativos pagos vs. gratuitos
+st.header("Aplicativos pagos vs. gratuitos")
+st.write("""
+- Aplicativos gratuitos têm maior alcance, mas os pagos tendem a atrair usuários mais engajados e dispostos a avaliar melhor.
+- **Estratégia sugerida:** Modelos híbridos, como aplicativos gratuitos com recursos pagos (freemium), podem maximizar alcance e receita.
+""")
+
+# Seção: Impacto das categorias no sucesso do aplicativo
+st.header("Impacto das categorias no sucesso do aplicativo")
+st.write("""
+- Categorias como **Jogos** e **Ferramentas** lideram em downloads e engajamento, mas categorias menores (como **Educação**) apresentam avaliações mais positivas.
+- **Oportunidade de mercado:** Investir em nichos com avaliações altas pode criar diferenciação em mercados menos saturados.
+""")
+
+# Seção: Sentimentos e feedback dos usuários
+st.header("Sentimentos e feedback dos usuários")
+st.write("""
+- Análise de sentimentos revelou que avaliações geralmente são positivas, mas categorias como **Negócios** têm maior proporção de críticas neutras/negativas.
+- **Ação sugerida:** Empresas devem usar essas análises para ajustar funcionalidades e melhorar a experiência do usuário, especialmente em categorias com menor engajamento emocional.
+""")
+
+# Seção: Visão estratégica para startups e negócios
+st.header("Visão estratégica para startups e negócios")
+st.write("""
+- **Para desenvolvedores independentes:** Focar em categorias menos exploradas com alta satisfação dos usuários, como **Educação** e **Saúde**.
+- **Para grandes empresas:** Ampliar o portfólio em categorias com alta tração e inovar em recursos para manter a competitividade.
+""")
+
