@@ -114,19 +114,6 @@ st.markdown("#### 7. Gratuitos x Pagos")
 st.write("Os aplicativos pagos tendem a ter menos instalações quando comparados aos gratuitos. Isso reflete o comportamento esperado do mercado, onde os usuários preferem experimentar apps gratuitos antes de pagar.")
 
 
-st.subheader("Distribuição de aplicativos por categoria")
-number_of_apps_in_category = df['Category'].value_counts().sort_values(ascending=True)
-
-fig_pie = go.Figure(
-    data=[go.Pie(
-        labels=number_of_apps_in_category.index,
-        values=number_of_apps_in_category.values,
-        hoverinfo='label+value'
-    )]
-)
-fig_pie.update_layout(title="Distribuição de aplicativos por categoria")
-st.plotly_chart(fig_pie)
-
 # Classificação média dos aplicativos
 st.subheader("Classificação média dos aplicativos")
 st.write("Analisando se existem aplicativos com classificações muito boas ou muito ruins.")
@@ -427,7 +414,7 @@ st.pyplot(fig)
 
 # Conclusão
 
-# Seção: Importância do pré-processamento de Dados]
+# Seção: Importância do pré-processamento de Dados
 st.header("Conclusões gerais")
 st.subheader("Importância do pré-processamento de dados")
 st.write("""
