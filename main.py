@@ -31,7 +31,32 @@ df['Installs'] = df['Installs'].apply(lambda x: int(x))
 df['Price'] = df['Price'].apply(lambda x: str(x).replace('$', '') if '$' in str(x) else str(x))
 df['Price'] = df['Price'].apply(lambda x: float(x))
 
+# Removendo valores nulos
+df = df.dropna()
+
 # Amostra
 st.title('Análise do conjunto de dados da Google Play Store')
 st.subheader('Amostra do dataset')
-st.write(df.head(10))
+st.write(df.sample(10))
+
+
+# Análise exploratória de dados
+st.subheader('Análise exploratória de dados')
+x = df['Rating']
+y = df['Size']
+z = df['Installs'][df['Installs'] != 0]
+p = df['Reviews'][df['Reviews'] != 0]
+t = df['Type']
+price = df['Price']
+
+df_plot = pd.DataFrame({
+    'Rating': x,
+    'Size': y,
+    'Installs': np.log(z), 
+    'Reviews': np.log10(p), 
+    'Type': t,
+    'Price': price
+})
+
+plot = sns.pairplot(df_plot, hue='Type', palette="Set2")
+st.pyplot(plot)
